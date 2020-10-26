@@ -1,0 +1,69 @@
+
+
+<form id="Booking_View_From" method="post" action="/cms/booking/view" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="Booking_View_Request_Id" id="Booking_View_Request_Id" value="0" />
+</form>
+
+
+<div class="modal modal-primary fade bs-modal-md" id="Booking_View_Modal" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel"
+    style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-inverse">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title">Booking Detail</h5>
+            </div>
+            <div class="modal-body" id="Booking_View_Modal_Body">
+                <form action="">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" placeholder="name" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script>
+    function booking_view_function(respon, html) {
+
+        console.log(respon);
+
+
+        var html_data = "";
+        html_data += "<div class='row'>"
+        html_data += "<div class='col-md-3'>"
+        html_data += "<img  src='>" + respon.data_record['User.profile_image.Document_Detail'] + "' />"
+        html_data += "</div>"
+        html_data += "<div class='col-md-9 before-line'>"
+        html_data += "<p><b>Name : </b> " + respon.data_record['User.User_Profile.First_Name'] + " </p>";
+        html_data += "<p><b>Pickup Location : </b> " + respon.data_record.From_Location + " </p>";
+        html_data += "<p><b>Dropoff Location : </b> " + respon.data_record.To_Location + " </p>";
+        html_data += "<p><b>Weight : </b> " +respon.data_record['Weight_List.List_Name'] + " </p>";
+        html_data += "<p><b>Date : </b> " + respon.data_record.Created_Date  + " </p>";
+        html_data += "<p><b>Eta Amount : </b> " + respon.data_record.ETA_Amount + " </p>";
+        html_data += "</div>"
+        html_data += "</div>"
+
+
+        $('#Booking_View_Modal_Body').html(html_data);
+        $('#Booking_View_Modal').modal();
+    }
+
+
+
+</script>

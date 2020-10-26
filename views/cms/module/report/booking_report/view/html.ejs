@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title></title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet">
+
+		<style>
+			table
+			{
+				border-collapse: collapse;
+				border: 0;
+			}
+			
+			.minimum_cntnt
+			{
+			 display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; height: 34px;
+			 }
+		</style>
+	</head>
+
+	<body>
+		<div style="background-color: #f5f7fa; border: 1px solid #d8d8d8; width: 1200px; margin: 0 auto;font-family:calibri;">
+			<table width="100%" style="background-color: #fff;">
+				<tr>
+					<td style="padding: 10px;">
+						<img style="width: 100px;" src="<%= session_user_data.Profile_Image %>">
+					</td>
+					
+					<td align="right" style="font-size: 18px;padding: 10px;">
+						<label>Date</label> <span><%= moment().format('DD-MMM-YYYY'); %></span>
+					</td>
+				</tr>
+			</table>
+			
+			<div style="padding: 15px; margin-bottom: 50px;">
+			
+                <h1 style="color: #002f5b; margin-bottom: 0px; margin-top: 0px;"><%= report.title %></h1>
+                <br/>
+                <h2 >From : <%= report.date_from.format('DD-MMM-YYYY') %> To : <%= report.date_to.format('DD-MMM-YYYY') %></h2>
+				<div style="overflow-x: auto;">
+					<table width="100%" style="border: 1px solid #bfbebe;">
+						<tr>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">S#</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Booking ID</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;    white-space: nowrap;">Customer Name</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;    white-space: nowrap;">Customer Contact</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;    white-space: nowrap;">Customer Email </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 60px;    white-space: nowrap;">P. Location</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 60px;    white-space: nowrap;">D. Location</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px; min-width: 100px;">Booking Created Date & Time</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;min-width: 100px;">Booking Date & Time</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Weight (tons)</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Estimated Amount</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Total Amount</th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Driver ID </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;white-space: nowrap;">Driver Name </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Ride Duration </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Ride Status </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Transaction ID </th>
+							<th style="background-color: #002f5b; color: #fff; border: 1px solid; padding: 8px 10px;">Amount Charged</th>
+						</tr>
+						
+						
+                        <% for(var i=0; i<(report.data).length; i++) {%>
+						
+						<tr>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= (i+1)%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i].Request_Id%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.User.User_Profile.First_Name']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.User.Email']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.User.User_Contact.User_Contact_Value1']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.From_Location']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.To_Location']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= moment(report.data[i]['Rms_Request.Requested_Date']).format("dddd, MMMM Do YYYY, h:mm:ss a") %></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= moment(report.data[i]['Rms_Request.Created_Date']).format("dddd, MMMM Do YYYY, h:mm:ss a")%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.Item_Weight']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Request.ETA_Amount']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Ride.Total_Fare']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i].Accepted_By%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['User.User_Profile.First_Name']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Rms_Ride.Duration']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span><%= report.data[i]['Accept_Status.List_Value']%></td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span>-</td>
+							<td style="border: 1px solid #e4e4e4; padding: 8px 10px;"><span class="minimum_cntnt">&nbsp;</span>-</td>
+						</tr>
+                        
+                        <% } %>
+					</table>
+				</div>
+			</div>
+		
+			<div style="background-color: #fff; padding: 15px;">
+				<table width="100%;">
+					<tr>
+						<td style="width: 33.3%"><img width="100px" src="/assets/report/logo.png"></td>
+						<td style="width: 33.3%" align="center"><%= report.copyright %></td>
+						<td style="width: 33.3%" align="right">
+							<a href="<%= report.fb %>"><img style="width: 20px;" src="/assets/report/facebook.png"></a>
+							<a href="<%= report.twitter %>"><img style="width: 20px;" src="/assets/report/twitter.png"></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+	</body>
+</html>

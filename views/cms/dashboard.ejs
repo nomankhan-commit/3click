@@ -1,0 +1,163 @@
+<% include part/header.ejs %>
+  <main class="main-wrapper clearfix">
+            <div class="row page-title clearfix">
+                    <div class="page-title-left">
+                        <h6 class="page-title-heading mr-0 mr-r-5">Dashboard</h6>
+                        <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+                    </div>
+                    <!-- /.page-title-left -->
+                    <div class="page-title-right d-none d-sm-inline-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/cms/dashboard">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Home</li>
+                        </ol>
+                    </div>
+                    <!-- /.page-title-right -->
+                </div>
+            <div class="widget-list row">
+                    <div class="widget-holder widget-sm col-md-3 widget-full-height">
+                        <div class="widget-bg">
+                            <div class="widget-body">
+                                <div class="counter-w-info media">
+                                    <div><i class="list-icon fa fa-truck bg-primary"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <p class="cstm-primary-color mr-b-5">No. of Register Driver</p><span
+                                            class="counter-title color-primary"><span class="counter"><%= data_record['data_total_driver']; %></span>
+                                        </span>
+                                    </div>
+                                    <!-- /.media-body -->
+
+                                </div>
+                                <!-- /.counter-w-info -->
+                            </div>
+                            <!-- /.widget-body -->
+                        </div>
+                        <!-- /.widget-bg -->
+                    </div>
+                    <div class="widget-holder widget-sm col-md-3 widget-full-height second-color">
+                            <div class="widget-bg">
+                                <div class="widget-body">
+                                    <div class="counter-w-info media">
+                                        <div><i class="list-icon fa fa-book bg-primary"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <p class="cstm-primary-color mr-b-5">Cancelled Bookings</p><span
+                                                class="counter-title color-primary"><span class="counter"><%= data_record['data_total_cancel_booking']; %></span>
+                                            </span>
+                                        </div>
+                                        <!-- /.media-body -->
+    
+                                    </div>
+                                    <!-- /.counter-w-info -->
+                                </div>
+                                <!-- /.widget-body -->
+                            </div>
+                            <!-- /.widget-bg -->
+                        </div>
+                        <div class="widget-holder widget-sm col-md-3 widget-full-height third-color">
+                                <div class="widget-bg">
+                                    <div class="widget-body">
+                                        <div class="counter-w-info media">
+                                            <div><i class="list-icon fa fa-tag bg-primary"></i>
+                                            </div>
+                                            <div class="media-body text-right">
+                                                <p class="cstm-primary-color mr-b-5">Total Earnings</p><span
+                                                    class="counter-title color-primary"><span class="counter"><%= data_record['data_total_earnings']; %></span>
+                                                </span>
+                                            </div>
+                                            <!-- /.media-body -->
+        
+                                        </div>
+                                        <!-- /.counter-w-info -->
+                                    </div>
+                                    <!-- /.widget-body -->
+                                </div>
+                                <!-- /.widget-bg -->
+                            </div>
+                            <div class="widget-holder widget-sm col-md-3 widget-full-height fourth-color">
+                                    <div class="widget-bg">
+                                        <div class="widget-body">
+                                            <div class="counter-w-info media">
+                                                <div><i class="list-icon feather feather-user-plus bg-primary"></i>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <p class="cstm-primary-color mr-b-5">No. of Booking</p><span
+                                                        class="counter-title color-primary"><span class="counter"> <%= data_record['data_total_booking']; %></span>
+                                                    </span>
+                                                </div>
+                                                <!-- /.media-body -->
+            
+                                            </div>
+                                            <!-- /.counter-w-info -->
+                                        </div>
+                                        <!-- /.widget-body -->
+                                    </div>
+                                    <!-- /.widget-bg -->
+                                </div>
+                    
+                   </div>
+                   <div class="widget-holder widget-full-height widget-no-padding widget-flex col-lg-12 radius-5">
+                        <div class="widget-bg">
+                            <div class="widget-body">
+                                <div class="row flex-1">
+                                    <div class="col-sm-12 pd-30">
+                                        <h6 class="mt-0 mb-4 text-uppercase fs-14 fw-bold">Booking Statistics</h6>
+                                        <div class="" style="height: 200px">
+                                            <canvas id="booking_statistics_canvas"></canvas>
+                                        </div>
+                                    </div>
+                                 </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.widget-body -->
+                        </div>
+                        <!-- /.widget-bg -->
+                    </div>
+    </main>
+    <!-- /.main-wrappper -->
+   
+<!-- </div> -->
+<!-- /.content-wrapper -->
+
+<script>
+
+// function booking_statistics() {
+      var ctx = document.getElementById("booking_statistics_canvas");
+
+      var context = ctx.getContext("2d");
+
+      var dark_blue = context.createLinearGradient(0, 100, 0, 200);
+      dark_blue.addColorStop(0, '#03a983');
+      dark_blue.addColorStop(1, '#1976d2');
+
+      var sky_blue = context.createLinearGradient(0, 100, 0, 200);
+      sky_blue.addColorStop(0, '#03a983');
+      sky_blue.addColorStop(1, '#17bff0');
+
+      var data = {
+        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AGU", "SEP", "Oct", "NOV", "Dec" ],
+        datasets: [
+          {
+            label: "Visitors",
+            data: [35, 48, 56, 28, 21, 29, 62, 75, 50, 10, 90, 80],
+            backgroundColor: dark_blue,
+						hoverBackgroundColor: dark_blue,
+          }, {
+            label: "Page Views",
+            data: [54, 69, 47, 75, 65, 58, 52, 65, 100, 40, 60, 100],
+            backgroundColor: sky_blue,
+						hoverBackgroundColor: sky_blue,
+          }
+        ]
+      };
+    
+    // }
+
+     
+
+</script>
+
+<% include part/footer.ejs %>
+

@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title><%=title %></title>
+		<!-- font maven pro -->
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet">
+
+		<style>
+			table
+			{
+				border-collapse: collapse;
+				border: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width: 600px; margin: 0 auto; ; padding: 15px;font-family:calibri; text-align: center;">
+			<table style="width: 100%; background-color: #f5f7fa;">
+				<tr>
+					<td>
+						<img src="<%=url %>/assets/email/bg-img.jpg" width="100%">
+					</td>
+				</tr>
+                
+				<tr>
+					<td align="center">
+						<span style="">&nbsp;</span>
+						<h1 style="color: #0d2a3c;">Verify This Email Address <br/> <%=email%></h1> 
+						<img src="<%=url %>/assets/email/user.jpg" width="100px"><br>
+						<span style="color: #0d2a3c; font-size: 24px;font-weight: 600;margin-top: 15px;display: inline-block;">Welcome To Transmissito</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<p style="font-size: 17px;line-height:20px;text-align: center; color: #000;margin-top: 10px;">
+							Please click the button below to verify your email address.<br><br>
+							If you did not sign up to Transmissito, please ignore this email or contact us at info@transmissito.com<br><br>
+							Tom Tompson<br>
+							Transmissito Support Team
+						</p><br>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center">
+						<a href="<%=url %>/verify-email/<%= email_token %>" style="background-color: #0d2a3c; color: #fff; font-size: 16px; font-weight: 900; border: 0; padding: 15px 50px;">Verify Email</a>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center" style="padding:15px">
+						<div style="text-align: center;margin-top: 20px;">
+							<a href="<%=application.social_media.fb %>"><img src="<%=url %>/assets/email/facebook.png" style="width: 20px;"></a>
+							<a href="<%=application.social_media.twitter %>"><img src="<%=url %>/assets/email/twitter.png" style="width: 20px;"></a>
+						</div>
+						<h4 style="font-size: 24px; color: #000; margin-bottom: 10px;font-weight: 500;margin-top: 0;"><%=website%></h4>
+						<p style="font-size: 17px;line-height:20px;text-align: justify; color: #000;">
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+						</p>
+					</td>
+				</tr>	
+			</table>
+			
+			
+			<table width="100%">
+				
+				
+				<tr><td style="height: 20px;"></td></tr>
+				
+			</table>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,117 @@
+/* .new_passwd_body{background-color: #c7cbdc;} */
+.new_passwd_body {
+    background-image: url(/assets/web/images//bg01.jpg);
+    background-size: cover;
+}
+.new_passwd_body:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.73);
+    z-index: -1;
+}
+.form_panel_div {
+    width: 500px;
+    height: 422px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -211px;
+}
+
+.form_panel_div2{
+    width: 360px;
+    height: 302px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -180px;
+    margin-top: -151px;
+    text-align: center;
+}
+
+.form_panel_logo {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form_panel_div_inner {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 2px #44434340;
+}
+
+h2.form_panel_mheading {
+    font-size: 22px;
+}
+
+h2.form_panel_mheading2 {
+    /* font-size: 22px;*/
+    font-size: 5rem;
+    text-align: center; 
+}
+
+hr.form_panel_hr {
+    margin-bottom: 1.5rem;
+} 
+
+.form_panel_btn
+{
+    cursor:pointer;    
+    background-color: #00305d;
+    border-color: #00305d;
+}
+
+.form_panel_btn:hover, .form_panel_btn:active{
+    background-color: #0c3f6f;
+    border-color: #0c3f6f;
+}
+
+.form_panel_div .state-error em.invalid {
+    position: absolute;
+    top: 3px;
+    right: 20px;
+    color: red;
+    font-size: 14px;
+}
+
+
+/* Error Page  */
+
+.error_div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: table;
+}
+
+.error_div_inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+}
+
+h2.error_headin_first {
+    font-size: 5.5rem;
+    letter-spacing: 8px;
+}
+
+h1.error_headin_second {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.error_btn
+{
+    cursor: pointer;
+    border-color: #00305d;
+    padding: 0.7rem 2.75rem;
+    background-color: #fff;
+    color: #00305d;
+    margin-top: 25px;
+}

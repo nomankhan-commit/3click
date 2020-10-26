@@ -1,0 +1,59 @@
+<% include ../../part/header.ejs %>
+<main class="main-wrapper clearfix">
+    <!-- Page Title Area -->
+    <!-- <div class="row page-title clearfix"> -->
+
+    <!-- /.page-title-left -->
+    <!-- Page Title Area -->
+    <div class="row page-title clearfix">
+        <div class="page-title-left">
+            <h6 class="page-title-heading mr-0 mr-r-5">Notifications</h6>
+            <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+        </div>
+        <!-- /.page-title-left -->
+        <div class="page-title-right d-none d-sm-inline-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/cms/">Dashboard</a></li>
+                <!-- <li class="breadcrumb-item active"><a href="/cms/drivers">Drivers</a></li> -->
+                <li class="breadcrumb-item active">Notifications</li>
+            </ol>
+        </div>
+
+    </div>
+    <% for(var i=0; i<data_record.length; i++) {%>
+
+    <div class="notification_wrapper">
+        <div class="notification_box">
+            <div class="row">
+              
+                <div class="col-md-12">
+                    <!-- <span><b>Laura Brown</b> has viewed your profile</span> -->
+                    
+                    <h2 class="notif-title"><%= data_record[i]['User_Notification_Title']%></h2>
+                    <div class="p-3">
+                       <p><%= data_record[i]['User_Notification_Description']%></p>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="notification-bell">
+                    <i class="feather feather-bell list-icon"></i>
+                </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- /.page-title-right -->
+    <!-- </div> -->
+    <!-- /.page-title -->
+    <!-- =================================== -->
+    <!-- Different data widgets ============ -->
+    <!-- =================================== -->
+
+    <!-- /.widget-list -->
+</main>
+<!-- /.main-wrappper -->
+
+</div>
+<!-- /.content-wrapper -->
+
+<% include ../../part/footer.ejs %>

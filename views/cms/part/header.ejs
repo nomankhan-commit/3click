@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/assets/cms/libs/pace/1.0.2/pace.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/cms/img/favicon.png">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>TransMissito </title>
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600%7CRoboto:400" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/vendors/material-icons/material-icons.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/cms/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="/assets/cms/vendors/mono-social-icons/monosocialiconsfont.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/vendors/feather-icons/feather.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/jquery.perfect-scrollbar/0.7.0/css/perfect-scrollbar.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/cms/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/switchery/0.8.2/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/cms/libs/datatables/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/multi-select/0.9.12/css/multi-select.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/cms/libs/jquery-toast-plugin/1.3.1/jquery.toast.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="/assets/cms/css/style.css" rel="stylesheet" type="text/css">
+    <!-- Head Libs -->
+    <script src="/assets/cms/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+
+    
+
+</head>
+
+
+<body class="<%= cms_class %>">
+
+    <div id="wrapper" class="wrapper">
+
+        <%if(cms_top_nav){ %>
+
+            <!-- HEADER & TOP NAVIGATION -->
+            <nav class="navbar">
+                <!-- Logo Area -->
+                <div class="navbar-header">
+                    <a href="/cms/" class="navbar-brand">
+                        <img class="logo-expand" alt="" src="/assets/cms/img/logo.png">
+                        <img class="logo-collapse" alt="" src="/assets/cms/img/logo-mobile.png">
+                        <!-- <p>BonVue</p> -->
+                    </a>
+                </div>
+                <!-- /.navbar-header -->
+                <!-- Left Menu & Sidebar Toggle -->
+                <ul class="nav navbar-nav">
+                    <li class="sidebar-toggle dropdown">
+                        <a href="javascript:void(0)" class="ripple">
+                            <i class="feather feather-menu list-icon fs-20"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.navbar-left -->
+                <!-- Search Form -->
+                <!--- <form class="navbar-search d-none d-sm-block" role="search"><i class="feather feather-search list-icon"></i> 
+          <input type="search" class="search-query" placeholder="Search anything..."> <a href="javascript:void(0);" class="remove-focus"><i class="feather feather-x"></i></a>
+      </form>-->
+       <div class="pt-4 pl-2">
+       <p class="mt-1"> <%= session_user_data.First_Name %></p>
+      </div>
+                <!-- /.navbar-search -->
+                <div class="spacer"></div>
+                <!-- notification  -->
+                <ul class="nav navbar-nav d-none d-lg-flex ml-2 ml-0-rtl">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="feather feather-bell list-icon"></i>
+                            <span class="button-pulse bg-danger"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-left dropdown-card animated flipInY">
+                            <div class="card">
+                                <header class="card-header d-flex justify-content-between mb-0">
+                                    <a href="javascript:void(0);">
+                                        <i class="feather feather-bell color-primary" aria-hidden="true"></i>
+                                    </a>
+                                    <span class="heading-font-family flex-1 text-center fw-400">Notifications</span>
+                                    
+                                </header>
+                                <ul class="card-body list-unstyled dropdown-list-group ps ps--theme_default" data-ps-id="6fc1589e-c499-19f4-dfbb-096f47c433fe">
+                                    <li>
+                                        <a class="media" href="javascript:;">
+                                            <span class="d-flex">
+                                                <i class="material-icons list-icon">notification_important</i>
+                                            </span>
+                                            <span class="media-body">
+                                                <span class="heading-font-family media-heading">Invitation accepted</span>
+                                                <span class="media-content">Your have been Invited ...</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                  
+                                    <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                        <div tabindex="0" class="ps__scrollbar-x" style="left: 0px; width: 0px;"></div>
+                                    </div>
+                                    <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+                                        <div tabindex="0" class="ps__scrollbar-y" style="top: 0px; height: 0px;"></div>
+                                    </div>
+                                </ul>
+                                <!-- /.dropdown-list-group -->
+                                <footer class="card-footer text-center">
+                                    <a class="headings-font-family text-uppercase fs-13" href="/cms/notification">See all activity</a>
+                                </footer>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.dropdown-menu -->
+                    </li>
+                    <!-- /.dropdown -->
+                   
+                </ul>
+
+
+                <!-- notificatin  -->
+                <!-- User Image with Dropdown -->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle dropdown-toggle-user ripple" data-toggle="dropdown">
+                            <span class="avatar thumb-xs2">
+                                <img src="<%= session_user_data.Profile_Image %>" class="rounded-circle" alt="">
+                                <!-- <i class="feather feather-chevron-down list-icon">
+                                </i>-->
+                                <i class="feather feather-chevron-down"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-left dropdown-card dropdown-card-profile animated flipInY">
+                            <div class="card">
+
+                                <ul class="list-unstyled card-body">
+                                    <li>
+                                        <a href="/cms/account">
+                                            <span>
+                                                <span class="align-middle">Manage Accounts</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/cms/change-password">
+                                            <span>
+                                                <span class="align-middle">Change Password</span>
+                                            </span>
+                                        </a>
+                                    </li>                                  
+                                    <li>
+                                        <a href="/cms/logout">
+                                            <span>
+                                                <span class="align-middle">Sign Out</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.dropdown-card-profile -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-nav -->
+            </nav>
+            <!-- /.navbar -->
+
+            <% } %>
+
+                <%if(cms_sidebar){ %>
+
+
+                    <div class="content-wrapper">
+                        <!-- SIDEBAR -->
+                        <aside class="site-sidebar scrollbar-enabled" data-suppress-scroll-x="true">
+                            <!-- User Details -->
+                            <div class="side-user d-none">
+                                <div class="col-sm-12 text-center p-0 clearfix">
+                                    <div class="d-inline-block pos-relative mr-b-10">
+                                        <figure class="thumb-sm mr-b-0 user--online">
+                                            <img src="" class="rounded-circle" alt="">
+                                        </figure>
+                                        <a href="javascript:;" class="text-muted side-user-link">
+                                            <i class="feather feather-settings list-icon"></i>
+                                        </a>
+                                    </div>
+                                    <!-- /.d-inline-block -->
+                                    <div class="lh-14 mr-t-5">
+                                        <a href="javascript:;" class="hide-menu mt-3 mb-0 side-user-heading fw-500"><% if (session_user_data) { %> <%= session_user_data.First_Name %> <% } %> </a>
+                                            
+                                        <!-- <br><small class="hide-menu">Developer</small> -->
+                                    </div>
+                                </div>
+                                <!-- /.col-sm-12 -->
+                            </div>
+                            <!-- /.side-user -->
+                            <!-- Call to Action -->
+
+
+                            <!-- Sidebar Menu -->
+                            <nav class="sidebar-nav">
+                                <ul class="nav in side-menu">
+                                    <!-- <li class="current-page "><a href="login.html"><i class="list-icon feather feather-command"></i> <span class="hide-menu">Login</span></a></li> -->
+                                    <li class="current-page ">
+                                        <a href="/cms/dashboard">
+                                            <i class="fa fa-home"></i>
+                                            <span class="hide-menu">Dashboard</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="current-page ">
+                                        <a href="/cms/booking/current">
+                                            <i class="fa fa-book"></i>
+                                            <span class="hide-menu">Bookings</span>
+                                        </a>
+                                    </li>
+                                    <li class="current-page ">
+                                        <a href="/cms/notification">
+                                            <i class="fa fa-bell"></i>
+                                            <span class="hide-menu">Notification</span>
+                                        </a>
+                                    </li>
+
+                                    <!-- <ul class="list-unstyled sub-menu"> -->
+                                    <!-- <li class="current-page "><a href="/cms/user"><i class="fa fa-users"></i><span class="hide-menu">Users</span></a></li>     -->
+                                    <!-- <li class="current-page "><a href="/cms/companies"><i class=""></i><span class="hide-menu">Companies</span></a></li> -->
+                                    <li class="current-page ">
+                                        <a href="/cms/drivers">
+                                            <i class="fa fa-car"></i>
+                                            <span class="hide-menu">
+                                                Drivers</span>
+                                        </a>
+                                    </li>
+
+                                    <!-- <li><a href="/cms/request/pending">Request</a></li> -->
+                                    <!-- <li><a href="company-earning.html">Company Earning</a></li> -->
+                                    <li><a href="javascript:;">
+                                            <i class="fa fa-file"></i>
+                                            <span class="hide-menu">
+                                                    Reports</span>
+                                        </a> 
+                                    <ul class="list-unstyled sub-menu">
+                                        <li><a href="/cms/report/booking-report">Booking Report</a></li>
+                                    </ul>
+                                    <!-- </li> -->
+                                    <!-- <li><a href="Tracking.html">Tracking</a></li> -->
+                                    </li>
+
+
+                                </ul>
+                                <!-- /.side-menu -->
+                            </nav>
+                            <!-- /.sidebar-nav -->
+                        </aside>
+                        <!-- /.site-sidebar -->
+
+
+
+                        <% } %>

@@ -1,0 +1,224 @@
+<% include part/header.ejs %>
+<main class="main-wrapper clearfix">
+
+    <div class="row page-title clearfix">
+        <div class="page-title-left">
+
+            <h6 class="page-title-heading mr-0 mr-r-5">Manage Account</h6>
+
+
+            <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+        </div>
+        <!-- /.page-title-left -->
+        <div class="page-title-right d-none d-sm-inline-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/cms/">Dashboard</a>
+                </li>
+
+
+                <li class="breadcrumb-item active">Manage Account</li>
+
+            </ol>
+        </div>
+    </div>
+
+    <!-- /.page-title-right -->
+    <!-- </div> -->
+    <!-- /.page-title -->
+    <!-- =================================== -->
+    <!-- Different data widgets ============ -->
+    <!-- =================================== -->
+    <div class="widget-list">
+        <div class="row">
+            <div class="col-md-12 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix">
+                        <!-- <h5 class="box-title mr-b-0">Create Users</h5> -->
+                        <form id="account_form" method="post" action="/cms/account" enctype="application/x-www-form-urlencoded">
+
+                            <div class="row mr-b-50">
+
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <label for="validationServer01">UserName / Email</label>
+                                        <input type="email" class="form-control" id="account_username" name="account_username"
+                                            disabled="true" value="<%= session_user_data.User_Name %>" placeholder="UserName / Email"
+                                            required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="validationServer02">FullName</label>
+                                        <input type="text" class="form-control" id="account_fullname" name="account_fullname"
+                                            value="<%= session_user_data.First_Name %>" placeholder="fullname" required
+                                            maxlength="100" />
+                                        <!-- <input type="text" class="form-control" id="drivers_fullname" placeholder="fullname" value="" required> -->
+                                    </div>
+
+
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Contact Number </label>
+                                            <input class="form-control" type="text" id="account_contactnumber" name="account_contactnumber"
+                                                placeholder="Contact Number " value="<%= session_user_data.User_Contact %>"
+                                                pattern="\d*" title="invalid number" required maxlength="20" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                       
+                                    
+                                    <label for="validationServer05">profile image</label>
+                                    <img id="profile_image_sec" src="<%= session_user_data.Profile_Image %>" style="height: 150px;width:100%;" alt="logo"/>
+                                    <input class="form-control" id="profile_image"  accept="image/x-png,image/jpeg" onchange="
+                                  
+
+                                    if (this.files && this.files[0]) {
+                                        var reader = new FileReader();
+
+                                        if(this.files[0].type == 'image/png' || this.files[0].type == 'image/jpeg'){
+
+                                            reader.onload = function (e) {
+                                                $('#profile_image_sec').attr('src', e.target.result);
+                                            }
+                                            reader.readAsDataURL(this.files[0]);
+                                        }
+                                      return;                                        
+                                       
+                                    }
+                                    
+                                    " name="profile_image" type="file">
+                                </div>
+
+
+                                <div class="col-md-12 form-group">
+                                    <label for="validationServer03">Address</label>
+                                    <input type="text" class="form-control" id="account_address" name="account_address"
+                                        placeholder="address" value="<%= session_user_data.User_Address %>" required
+                                        size="2" required maxlength="200" />
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Description</label>
+                                        <textarea class="form-control" type="text" id="account_description" name="account_description"
+                                            placeholder="Abc xyz" required maxlength="1000"><%= session_user_data.User_Description %></textarea>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="form-group row">
+                                    <div class="col-md-12 text-right btn-list">
+                                        <button class="btn btn-primary btn-rounded" type="button" onclick="
+
+                                            var url = '/cms/account';
+
+                                            if($('#profile_image').val() != ''){
+
+                                                url = '/cms/account-profile-image';
+
+                                                submit_data(
+                                                    this,
+                                                    '',
+                                                    'account_form',
+                                                    '',
+                                                    url,
+                                                    '',
+                                                    '',
+                                                    false,
+                                                    '',
+                                                    '',
+                                                    true,
+                                                    false,
+                                                    true,
+                                                    false
+                    
+                                                );
+
+                                            }else{
+
+                                                   
+                                            submit_data(
+                                                this,
+                                                '',
+                                                'account_form',
+                                                '',
+                                                url,
+                                                '',
+                                                '',
+                                                false,
+                                                '',
+                                                '',
+                                                true,
+                                                false,
+                                                true,
+                                                true
+                
+                                            );
+
+                                            }
+
+                                           
+                                         ">Submit</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+
+            <!-- /.widget-holder -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.widget-list -->
+</main>
+<!-- /.main-wrappper -->
+
+</div>
+<!-- /.content-wrapper -->
+<form id="Driver_Get_City_From" method="post" action="/cms/drivers/get-city" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="Driver_Get_City_State_Id" id="Driver_Get_City_State_Id" value="0" />
+</form>
+
+
+
+
+<script>
+
+    function driver_get_city_function(respon, html) {
+
+        console.log(respon);
+
+        $('#drivers_city').html('');
+        // $("#drivers_city option[value='']").remove();
+        $(respon.response).each(function (i, v) {
+            var option = new Option(respon.response[i].City_Name, respon.response[i].City_Id, false, false);
+            $('#drivers_city').append(option);
+
+        });
+
+        $('#drivers_city').trigger('change');
+
+
+        // 
+    }
+
+   
+</script>
+
+<% include part/footer.ejs %>

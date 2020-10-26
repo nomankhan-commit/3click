@@ -1,0 +1,48 @@
+<% include ../part/header.ejs %>
+
+
+    <div class="form_panel_div2">
+
+        <div class="form_panel_logo">
+            <img src="/assets/web/images/form_logo.png" alt="">
+        </div>
+
+        <div class="form_panel_div_inner">
+
+            <% if(Role_Id == 3){ %>
+            <div class="row" id="message_data">
+                    <div class="col-md-12">
+                    <form id="Booking_Accept_From" method="post" action="/booking/approved/<%= token %>" enctype="application/x-www-form-urlencoded">
+                        <select class="form-conrol" name="Booking_Accept_User_Id" id="Booking_Accept_User_Id" >
+                            <% for(var i=0; i<user_record.length; i++) {%>        
+                                <option value="<%= user_record[i].User_Id %>">
+                                    <%= user_record[i]['User_Profile.First_Name'] %>
+                                </option>        
+                            <% }%>
+                        </select>
+                        <input type="hidden" name="company_id" value="<%= Accepted_By %>" />
+                        
+                        <button type="submit" class="btn"> Assigin </button>
+
+                        <% if(typeof status !== 'undefined'){ %>
+
+                            <p><%= message %> </p>
+
+                        <% } %>    
+                    </form>
+                </div>
+            </div>
+            <% } %>
+            <div class="row" id="message_data" <% if(Role_Id == 3){ %> style="display:none" <% } %> >
+                <div class="col-md-12">
+                    <h2 class="form_panel_mheading2"><i class="fa fa-thumbs-up" aria-hidden="true"></i></h2>
+                    <hr class="form_panel_hr">
+                </div>
+                <div class="col-md-12">
+                    <p>Booking Approved Successfully</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../part/footer.ejs %>

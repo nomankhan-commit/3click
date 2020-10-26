@@ -1,0 +1,360 @@
+<% include ../../part/header.ejs %>
+
+    <main class="main-wrapper clearfix">
+        <!-- Page Title Area -->
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <h6 class="page-title-heading mr-0 mr-r-5">Current Booking</h6>
+                <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/cms/booking/current" class="cstm-btn active">Current Bookings</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/cms/booking/schedule" class="cstm-btn">Schedule Bookings</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/cms/booking/rejected" class="cstm-btn">Rejected Bookings</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/cms/booking/cancelled" class="cstm-btn">Cancelled Bookings</a>
+            </div>
+        </div>
+        <!--  -->
+
+
+
+
+        <div class="widget-body clearfix">
+            <div class="table-responsive">
+                <table class="table table-striped  for_table-grid max-th-90" id="booking_current_dt">
+                    <thead>
+                        <tr>
+                            <th>Ride Id</th>
+                            <th>Name</th>
+                            <th>Pickup Location</th>
+                            <th>Drop off Location</th>
+                            <th>Weight</th>
+                            <th>Estimated</th>
+                            <th>Booking Date</th>
+                            <th>Pickup Date</th>
+                            <th>Time Left</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% for(var i=0; i<data_record.length; i++) {%>
+                            <tr>
+                                <td>
+                                    <%= data_record[i].Request_Id %>
+                                </td>
+                               
+
+                                <%
+                    var requested_data = moment(data_record[i].Requested_Date);
+                    var booking_data = moment(data_record[i].Created_Date);
+                      var booking_data_2 = moment(data_record[i].Created_Date);
+                      var remaining_time = booking_data.add(AS_Booking_Expiry, 'minutes');
+                      var current_date = moment();
+                      var remaining_time_min = moment.duration(remaining_time.diff(current_date));
+                      remaining_time_min = (parseInt(remaining_time_min.asMinutes())%60)
+                     %>
+
+
+                                    <td>
+                                        <%= data_record[i]['User.User_Profile.First_Name'] %>
+                                    </td>
+                                    <td>
+                                        <%= data_record[i].From_Location %>
+                                    </td>
+                                    <td>
+                                        <%= data_record[i].To_Location %>
+                                    </td>
+                                    <td>
+                                        <%= data_record[i]['Weight_List.List_Name'] %>
+                                    </td>
+                                    <td>
+                                        <%= Math.round(data_record[i].ETA_Amount); %>
+                                    </td>
+                                    <td>
+                                        <%= booking_data.format('DD/MM/YYYY'); %>
+                                    </td>
+                                    <td>
+                                        <%= requested_data.format('DD/MM/YYYY'); %>
+                                    </td>
+
+                                    <td>
+                                        <%= (remaining_time_min <1)?0:remaining_time_min %> Min Remaining</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-circle btn-sm ripple" onclick="
+                                    $('#Booking_View_Request_Id').val('<%= data_record[i].Request_Id %>');
+                                    submit_data(
+                                        this,
+                                        '',
+                                        'Booking_View_From',
+                                        '',
+                                        '/cms/booking/view',
+                                        '',
+                                        '',
+                                        false,
+                                        'booking_view_function',
+                                        this,
+                                        false,
+                                        true,
+                                        true,
+                                        true
+        
+                                    );
+                                        
+                                    ">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </button>
+
+                                        <button class="btn btn-success btn-circle btn-sm ripple" onclick="
+                                        var currentdate = '<%=data_record[i].Created_Date%>';
+                                        
+                                        var startTime = new Date(currentdate);
+                                        var myTimeSpan = parseInt('<%=AS_Booking_Expiry%>')*60*1000; 
+                                        startTime.setTime(startTime.getTime() + myTimeSpan);                                       
+                                        
+                                        if(startTime < new Date()){
+
+                                            error_modal('Booking is expired')
+                                            
+                                        }else{
+                                        
+                                            remove_row_btn = $(this);
+                                            $('#Booking_Accept_Request_Id').val('<%= data_record[i].Request_Id %>');
+                                            $('#Booking_Accept_Modal').modal();
+                                        
+                                        }
+                                    ">
+
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+
+                                        </button>
+
+
+                                        <button class=" btn btn-danger btn-circle btn-sm ripple  " onclick="
+
+                                            $('#Booking_Reject_Request_Id').val('<%= data_record[i].Request_Id %>');
+                                            submit_data(
+                                                this,
+                                                '',
+                                                'Booking_Reject_From',
+                                                '',
+                                                '/cms/booking/reject',
+                                                '',
+                                                '/cms/booking/current',
+                                                false,
+                                                'booking_reject_function',
+                                                this,
+                                                true,
+                                                false,
+                                                true,
+                                                true
+                
+                                            );
+
+                                            ">
+                                            <i class="fa fa-close "></i>
+                                        </button>
+                                    </td>
+                            </tr>
+
+                            <% } %>
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
+
+        <!--  -->
+    </main>
+    <!-- /.main-wrappper -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <form id="Booking_Reject_From" method="post" action="/cms/booking/reject" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="Booking_Reject_Request_Id" id="Booking_Reject_Request_Id" value="0" />
+    </form>
+
+
+    <div class="modal modal-primary fade bs-modal-md" id="Booking_Accept_Modal" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-inverse">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title">Booking Accept test</h5>
+                </div>
+                <form id="Booking_Accept_From" method="post" action="/cms/booking/accept" enctype="application/x-www-form-urlencoded">
+                    <div class="modal-body">
+
+                        <h5>Please Select The Available Driver</h5>
+
+                        <select class="form-conrol" name="Booking_Accept_User_Id" id="Booking_Accept_User_Id" style="visibility: hidden; height: 10px; ">
+                            <% for(var i=0; i<user_record.length; i++) {%>
+
+                                <option value="<%= user_record[i].User_Id %>">
+                                    <%= user_record[i]['User_Profile.First_Name'] %>
+                                </option>
+
+                                <% }%>
+                        </select>
+
+                        <input type="hidden" name="Booking_Accept_Request_Id" id="Booking_Accept_Request_Id" value="0" />
+                    </div>
+                    <% for(var i=0; i<user_record.length; i++) {%>
+                        <div class="boking_modal_grid">
+
+                            <div class="row">
+
+
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Driver ID</b>
+                                    </p>
+                                    <p>
+                                        <%= user_record[i].User_Id %>
+                                    </p>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Driver Name</b>
+                                    </p>
+                                    <p>
+                                        <%= user_record[i]['User_Profile.First_Name'] %>
+                                    </p>
+                                </div>
+                                <div class="col-md-5">
+                                    <p>
+                                        <b>Driver Email</b>
+                                    </p>
+                                    <p>
+                                        <%= user_record[i].User_Name %>
+                                    </p>
+                                </div>
+                                <div class="col-md-1">
+                                    <p>
+                                        <b>Select</b>
+                                    </p>
+
+                                    <button class="btn <% if(i==0){ %> btn-success <% } %> btn-circle btn-sm ripple" type="button" onclick="$('.boking_modal_grid .btn-success').removeClass('btn-success'); $(this).addClass('btn-success'); $('#Booking_Accept_User_Id').val('<%= user_record[i].User_Id %>')">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <% }%>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" onclick="
+                    
+                           
+                             submit_data(
+                                 this,
+                                 '',
+                                 'Booking_Accept_From',
+                                 '',
+                                 '/cms/booking/accept',
+                                 '',
+                                 '/cms/booking/current',
+                                 false,
+                                 'booking_accept_function',
+                                 remove_row_btn,
+                                 true,
+                                 false,
+                                 true,
+                                 true
+ 
+                             );
+
+                             " class="btn btn-success dropdown-toggle ripple">Done</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle ripple" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <% include part/view_booking_detail.ejs %>
+
+        <script>
+
+            var remove_row_btn = null;
+            var table = null
+
+            window.onload = function (e) {
+
+
+                table = $('#booking_current_dt').DataTable({
+                    processing: true,
+                    // serverSide: true,
+                    // ajax: {
+                    //     url: "/viewreports",
+                    //     dataSrc: "reportList"
+                    // },    
+                    // columns: [
+                    //     { data: "Request_Id" },
+                    //     { data: "profile_image" },
+                    //     { data: "First_Name" },
+                    //     { data: "From_Location" },
+                    //     { data: "To_Location" },
+                    //     { data: "Weight_List" },
+                    //     { data: "ETA_Amount" },
+                    //     { data: "remaining_time_min" },
+                    //     { data: "action" },
+                    // ]
+
+                    "lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]],
+                    "columnDefs": [
+                        {
+                            "targets": [0],
+                            "visible": false,
+                            "searchable": false
+                        },
+                       
+                    ],
+                    "order": [[ 0, "desc" ]]
+                });
+
+            }
+
+            function booking_accept_function(respon, html) {
+
+                $('#Booking_Accept_Request_Id').val('0');
+                $('#Booking_Accept_Modal').modal('hide');
+                $(html).closest('tr').remove();
+                // table.ajax.reload();
+
+
+            }
+
+            function booking_reject_function(respon, html) {
+
+                $(html).closest('tr').remove();
+                // table.ajax.reload();
+            }
+
+
+        </script>
+
+
+
+        <% include ../../part/footer.ejs %>

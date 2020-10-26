@@ -1,0 +1,18 @@
+<% include main/part/header.ejs %>
+
+<div class="error_div">
+    <div class="error_div_inner">
+        <h2 class="error_headin_first"><%= (error.status == null)?"404":error.status %></h2>
+        <h1 class="error_headin_second"><%= message %></h1>
+        
+    </div>
+</div>
+
+<% if(false){ %>
+
+    <pre><%= error.stack %></pre>
+
+<% } %>
+
+
+<% include main/part/footer.ejs %>

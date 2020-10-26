@@ -1,0 +1,596 @@
+
+ <% include ../../../part/header.ejs %> 
+<!-- modal edit -->
+
+<div class="modal modal-primary fade edit_popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true" style="display: none">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-inverse">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabel2">Approved Request</h5>
+            </div>
+            <div class="modal-body">
+              <div class="col-md-12">
+                    <div class="row">
+                        <form id="view_req_approved">
+
+                            <div class="row mr-b-50">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationServer01">Username / Email</label>
+                                    <input type="text" class="form-control" id="user_username"
+                                        placeholder="Username / Email" placeholder="Mark" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationServer02">FullName</label>
+                                    <input type="text" class="form-control" id="user_fullname" placeholder="fullname"
+                                        value="" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationServer02">Password</label>
+                                    <input type="password" class="form-control" id="user_password"
+                                        placeholder="password" value="" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationServer02">Conform Password</label>
+                                    <input type="Password" class="form-control" id="user_conform_password"
+                                        placeholder="conform password" value="" required>
+                                </div>
+
+
+
+                                <div class="col-md-12 mb-12">
+                                    <label for="validationServer03">Address</label>
+                                    <input type="text" class="form-control" id="user_address" placeholder="address"
+                                        required size="2">
+                                    <div class="invalid-feedback">Please provide a valid Country.</div>
+                                </div>
+                                <!--  -->
+
+                               
+
+                                <div class="col-md-4 mb-4">
+                                    <!--  -->
+                                    <!--slect Country  -->
+                                    <div class="form-group">
+                                        <label class="form-control-label">Country</label>
+                                        <select class="m-b-10 form-control" id="user_country" data-placeholder="Choose"
+                                            data-toggle="select2">
+
+                                            <!-- <optgroup label="Mountain Time Zone"> -->
+
+                                            <option value="CT">Pakistan</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                            <!-- </optgroup> -->
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <!--  -->
+
+                                    <!--  -->
+                                    <div class="form-group">
+                                        <label class="form-control-label">State</label>
+                                        <select class="m-b-10 form-control" id="user_state" data-placeholder="Choose"
+                                            data-toggle="select2">
+
+                                            <!-- <optgroup label="Mountain Time Zone"> -->
+
+                                            <option value="CT">Sindh</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                            <!-- </optgroup> -->
+                                        </select>
+                                    </div>
+                                    <!--  -->
+
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <!--  -->
+                                    <!--slect Country  -->
+                                    <div class="form-group">
+                                        <label class="form-control-label">City </label>
+                                        <select class="m-b-10 form-control" id="user_city" data-placeholder="Choose"
+                                            data-toggle="select2">
+
+                                            <!-- <optgroup label="Mountain Time Zone"> -->
+
+                                            <option value="CT">Karachi</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                            <!-- </optgroup> -->
+                                        </select>
+                                    </div>
+
+                                    <!--  -->
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+
+                                    <div class="form-group">
+                                        <label class="form-control-label">Role </label>
+                                        <select class="m-b-10 form-control" id="user_role" data-placeholder="Choose">
+
+                                            <option value="CT">Admin</option>
+                                            <option value="DE">User</option>
+                                            <option value="FL">Customer</option>
+                                            <option value="GA">Driver</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Status </label>
+                                        <select class="m-b-10 form-control" id="user_status" data-placeholder="Choose">
+
+                                            <option value="CT">Active</option>
+                                            <option value="DE">Deactive</option>
+
+                                        </select>
+                                    </div>
+
+                                    <!--  -->
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <!-- <label for="validationServer05">profile image</label>
+                                    <input class="form-control" id="user_profile_picture" type="file"> -->
+                                    <img src="img_avatar.png" alt="Avatar" style="width:200px;border-radius: 50%">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="validationServer05">contact number</label>
+                                    <input class="form-control" id="user_contact_number" placeholder="contact number"
+                                        type="Text">
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="form-group row">
+                                    <div class="col-md-9 ml-md-auto btn-list">
+                                        <button class="btn btn-primary btn-rounded" type="button">Submit</button>
+                                        <button class="btn btn-outline-default btn-rounded"
+                                            type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+              </div>
+            </div>
+            <!-- <div class="modal-footer"><a href="#" class="btn btn-info btn-rounded ripple text-left">Learn more</a>  -->
+                <!-- <button type="button" class="btn btn-danger btn-rounded ripple text-left" data-dismiss="modal">Close this</button> -->
+            <!-- </div> -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- modal edit -->
+<main class="main-wrapper clearfix">
+        <!-- Page Title Area -->
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <h6 class="page-title-heading mr-0 mr-r-5">Request Approved</h6>
+                <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+            </div>
+            <!-- /.page-title-left -->
+            <div class="page-title-right d-none d-sm-inline-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/cms/">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Request Approved</li>
+                </ol>
+            </div>
+            <!-- /.page-title-right -->
+        </div>
+        <!-- /.page-title -->
+        <!-- =================================== -->
+        <!-- Different data widgets ============ -->
+        <!-- =================================== -->
+        <!--  -->
+        <div class="row">
+            <div class="col-md-3"><a href="/cms/request/pending"  > Pending</a></div>
+            <div class="col-md-3"><a href="/cms/request/approved" style="color: black">Approved</a></div>
+            <div class="col-md-3"><a href="/cms/request/cancel"    >  Cancel</a></div>
+        
+      </div>
+
+
+        <!--  -->
+        <div class="widget-list">
+            <div class="row">
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg">
+                        <div class="widget-heading clearfix">
+                            <h5></h5>
+                            <!-- <button class="btn btn-outline-primary ripple "data-toggle="modal" data-target=".add_new_popup"> -->
+                                <!-- <span>Create</span> -->
+                                <!-- <i class="material-icons list-icon ml-2 font-30">add_box</i>   -->
+                            <!-- </button> -->
+                            <a href="/cms/user/add" class="btn btn-outline-primary ripple" disabled>create</a>
+                        </div>
+                        <!-- /.widget-heading -->
+                        <div class="widget-body clearfix">
+                            <table class="table table-striped table-responsive" data-toggle="datatables" data-plugin-options='{"searching": false}'>
+                                <thead>
+                                    <tr>
+                                        <th>USERNAME / EMAIL</th>
+                                        <th>ADDRESS</th>
+                                        <th>ROLE</th>
+                                        <th>STATUS</th>
+                                        <th>CREATED BY</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    
+                                        <td>abs@gmail.com</td>
+                                        <td>H # 258 sector 50-A landhi # 4 </td>
+                                        <td>PAKISTAN</td>
+                                        <td>SINDH</td>
+                                        <td>KARACHI</td>    
+                                        <td>
+                                                <!-- cms/user/edit -->
+                                            <button class="btnedit"  data-toggle="modal" data-target=""> 
+                                                <a href="/cms/edit/approved_requests"><i class="fa fa-pencil-square-o "></i></a>
+                                            </button>
+                                            <button class="" data-toggle="modal" data-target=".edit_popup"> 
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btndelete " data-toggle="modal" data-target=".delete_popup"> 
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.widget-body -->
+                    </div>
+                    <!-- /.widget-bg -->
+                </div>
+                <!-- /.widget-holder -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.widget-list -->
+    </main>
+    <!-- /.main-wrappper -->
+ 
+</div>
+<!-- /.content-wrapper -->
+
+
+
+<!--  -->
+<% include ../../../part/footer.ejs %>

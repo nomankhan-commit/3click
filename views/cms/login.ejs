@@ -1,0 +1,68 @@
+<% include part/header.ejs %>
+
+
+
+    <div class="row container-min-full-height">
+        <div class="col-lg-8 p-3 login-left">
+            <div class="w-50">
+                <h2 class="mb-4 text-center">Welcome back!</h2>
+                <form class="text-center" id="Login_From" method="post" action="/cms/login" enctype="application/x-www-form-urlencoded">
+                    <div class="form-group">
+                        <label class="text-muted" for="Login_User_Name">Email</label>
+                        <input type="email" placeholder="email@yoursit.com" class="form-control form-control-line" id="Login_User_Name" name="Login_User_Name"
+                            required="true">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-muted" for="Login_Password">Password</label>
+                        <input type="password" placeholder="Password" class="form-control form-control-line" id="Login_Password" name="Login_Password"
+                            required="true" value="">
+                    </div>
+                    <div class="form-group no-gutters mb-5 text-center">
+                        <a href="/cms/forget-password" id="to-recover" class="text-muted fw-700 text-uppercase heading-font-family fs-12">Forgot Password?</a>
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group mr-b-20">
+                        <button class="btn btn-block btn-rounded btn-md btn-primary text-uppercase fw-600 ripple"
+                            onclick="
+                           submit_data(
+                                this,
+                                '',
+                                'Login_From',
+                                '',
+                                '/cms/login',
+                                '',
+                                '/cms/dashboard',
+                                true,
+                                '',
+                                '',
+                                false,
+                                false,
+                                true,
+                                true
+
+                            );
+                
+                            "
+                            type="button" >Sign In</button>
+
+                        <p id="form-messages"></p>
+                    </div>
+                </form>
+                <!-- /form -->
+
+            </div>
+            <!-- /.w-75 -->
+        </div>
+        <div class="col-lg-4 login-right d-lg-flex d-none pos-fixed pos-right text-inverse container-min-full-height" style="background-image: url(/assets/cms/img/site-bg-small.jpg)">
+            <div class="login-content px-3 w-75 text-center">
+
+            </div>
+            <!-- /.login-content -->
+        </div>
+        <!-- /.login-right -->
+    </div>
+    <!-- /.row -->
+
+    <% include part/footer.ejs %>
+
+

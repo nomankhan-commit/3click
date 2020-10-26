@@ -1,0 +1,456 @@
+<% include ../../part/header.ejs %>
+    <main class="main-wrapper clearfix">
+        <!-- Page Title Area -->
+        <!-- <div class="row page-title clearfix"> -->
+
+        <!-- /.page-title-left -->
+        <!-- Page Title Area -->
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <% if(data_record.record_id == 0){ %>
+                    <h6 class="page-title-heading mr-0 mr-r-5">Create Driver</h6>
+                    <% }else{ %>
+                        <h6 class="page-title-heading mr-0 mr-r-5">Update Driver</h6>
+                        <% } %>
+                            <!-- <h6 class="page-title-heading mr-0 mr-r-5">Create Driver</h6> -->
+                            <p class="page-title-description mr-0 d-none d-md-inline-block"></p>
+            </div>
+            <!-- /.page-title-left -->
+            <div class="page-title-right d-none d-sm-inline-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/cms/">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="/cms/drivers">Drivers</a>
+                    </li>
+                    <% if(data_record.record_id == 0){ %>
+                        <li class="breadcrumb-item active">Create Driver</li>
+                        <% }else{ %>
+                            <li class="breadcrumb-item active">Update Driver</li>
+                            <% } %>
+                </ol>
+            </div>
+
+        </div>
+
+        <!-- /.page-title-right -->
+        <!-- </div> -->
+        <!-- /.page-title -->
+        <!-- =================================== -->
+        <!-- Different data widgets ============ -->
+        <!-- =================================== -->
+        <div class="widget-list">
+            <div class="row">
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg">
+                        <div class="widget-body clearfix">
+                            <!-- <h5 class="box-title mr-b-0">Create Users</h5> -->
+                            <form id="create_drivers" method="post" action="/cms/drivers/add" enctype="multipart/form-data">
+
+                                <div class="row mr-b-50">
+
+                                    <div class=col-md-8>
+                                            
+                                            <div class="row">
+                                   
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationServer01">UserName / Email</label>
+                                            <input type="text"  class="form-control" id="drivers_username" name="drivers_username"  placeholder="abc@xyz.com" required
+                                                <% if(data_record.record_id==0 ){ %> value=""
+                                            <% }else{ %>
+                                                value="<%= data_record.record.User_Name %>"
+                                                disabled="true"
+                                                
+
+                                                    <% } %>
+
+                                                        />
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationServer02">Full Name</label>
+                                            <input type="text" class="form-control" id="drivers_fullname" name="drivers_fullname" placeholder="fullname" maxlength = "150" required <% if(data_record.record_id==0
+                                                ){ %> value=""
+                                            <% }else{ %>
+                                                value="<%= (data_record.record.User_Profile != null)? data_record.record.User_Profile.First_Name : "" %>"
+
+                                                    <% } %>
+
+                                                        />
+                                        </div>
+
+                                        <% if(data_record.record_id == 0){ %> 
+
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationServer02">Password</label>
+                                            <input type="password" class="form-control" id="drivers_password"  name="drivers_password" placeholder="password" value="" required 
+                                            value=""
+                                                                                                />
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationServer02">Conform Password</label>
+                                            <input type="Password" class="form-control" id="drivers_conform_password" name="drivers_conform_password" placeholder="conform password"  value="" required>
+                                        </div>
+
+                                        <% } %>
+
+
+                                        <div class="col-md-12 form-group">
+                                            <label for="validationServer03">Address</label>
+                                            <input type="text" class="form-control" id="drivers_address" name="drivers_address" placeholder="address" required size="2" required maxlength = "200" <% if(data_record.record_id==0
+                                                ){ %> value=""
+                                            <% }else{ %>
+                                                value="<%= (data_record.record.User_Profile != null)? data_record.record.User_Profile.User_Address : "" %>"
+
+                                                    <% } 
+                                            %>
+                                                        />
+
+                                                        <div class="invalid-feedback">Please provide a valid Country.</div>
+                                        </div>
+                                        <!--  -->
+                                        <% if(data_record.record_id == 0){ %> 
+
+                                        <div class="col-md-4 ">
+                                            <!--  -->
+                                            <!--slect Country  -->
+                                            <div class="form-group">
+                                                <label class="form-control-label">Country</label>
+                                                <select class="m-b-10 form-control" id="drivers_country" name="drivers_country" required data-placeholder="Choose" data-toggle="select2">
+                                                    <% for(var i=0; i < data_record.sys_country.length; i++ ){ %>
+                                                        <option value="<%= data_record.sys_country[i].Country_Id %>">
+                                                            <%= data_record.sys_country[i].Country_Name %>
+                                                        </option>
+                                                        <% } %>
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4 ">
+                                            <!--  -->
+                                            <!--slect Country  -->
+                                            <div class="form-group">
+                                                <label class="form-control-label">State </label>
+                                                <select class="m-b-10 form-control" id="drivers_state"  required name="drivers_state" onchange="
+                                                    $('#Driver_Get_City_State_Id').val($(this).val());
+                                                    submit_data(
+                                                        this,
+                                                        '',
+                                                        'Driver_Get_City_From',
+                                                        '',
+                                                        '/cms/drivers/get-city',
+                                                        '',
+                                                        '',
+                                                        false,
+                                                        'driver_get_city_function',
+                                                        this,
+                                                        false,
+                                                        true,
+                                                        true,
+                                                        true
+                        
+                                                    );
+                                                    
+                                                    
+                                                    " data-placeholder="Choose" data-toggle="select2">
+                                                    <% for(var i=0; i < data_record.sys_state.length; i++ ){ %>
+                                                        <option value="<%= data_record.sys_state[i].State_Id %>">
+                                                            <%= data_record.sys_state[i].State_Name %>
+                                                        </option>
+                                                        <% } %>
+
+                                                        
+                                                </select>
+                                            </div>
+
+                                            <!--  -->
+                                        </div>
+
+
+                                        <div class="col-md-4 ">
+                                            <!--  -->
+
+                                            <!--  -->
+                                            <div class="form-group">
+                                                <label class="form-control-label">City</label>
+                                                <select class="m-b-10 form-control" id="drivers_city" name="drivers_city" required data-placeholder="Choose" data-toggle="select2">
+                                                    <% for(var i=0; i < data_record.sys_city.length; i++ ){ %>
+                                                        <option value="<%= data_record.sys_city[i].City_Name %>">
+                                                            <%= data_record.sys_city[i].City_Name %>
+                                                        </option>
+                                                        <% } %>
+
+
+                                                </select>
+                                            </div>
+                                            <!--  -->
+
+                                        </div>
+
+
+
+                                        <% } %>
+    <!--
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Age </label>
+                                                <input class="form-control" id="drivers_age"  name="drivers_age" placeholder="Age" required maxlength="3" type="text">
+                                            </div>
+
+                                            
+
+                                        </div>
+
+                                        <input  id="drivers_age"  name="drivers_age" value=""  type="hidden">
+    -->
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Contact Number </label>
+                                                <input class="form-control" id="drivers_contact_number" name="drivers_contact_number" maxlength = "20" required placeholder="Contact Number " type="text" <% if(data_record.record_id==0
+                                                    ){ %> value=""
+                                                <% }else{ %>
+                                                    value="<%= data_record.record.User_Contact[0].User_Contact_Value1 %>"
+
+                                                        <% } 
+                                                %>
+
+                                                            />
+                                            </div>
+
+                                            <!--  -->
+
+                                        </div>
+
+                                        <!--
+                                        <div class="col-md-6 mb-3" >
+                                            <div class="form-group">
+                                                <label class="form-control-label">Vehicle Reg </label>
+                                                <input class="form-control" id="drivers_vehicle_reg" maxlength="30" name="drivers_vehicle_reg" required placeholder="Vehicle Reg "  type="text">
+                                            </div>
+
+                                            
+
+                                        </div>
+                                        -->
+                                        <input  id="drivers_vehicle_reg"  name="drivers_vehicle_reg" value=""  type="hidden">
+
+                                        <!--
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Certification </label>
+                                                <input class="form-control" id="drivers_certification" name="drivers_certification" maxlength="30" required  placeholder="certification" type="text">
+                                            </div>
+
+                                            
+
+                                        </div>-->
+
+                                        <input  id="drivers_certification" name="drivers_certification"  value=""  type="hidden">
+
+
+    <!--
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-control-label">license </label>
+                                                <input class="form-control" id="drivers_license" required name="drivers_license" maxlength="30" placeholder="license" type="text">
+                                            </div>
+
+                                            
+
+                                        </div> -->
+
+                                        <input  id="drivers_license" name="drivers_license"  value=""  type="hidden">
+
+    <!--
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Vehicle Insurance</label>
+                                                <input class="form-control" id="drivers_vehicle_insurance" maxlength="30" required name="drivers_vehicle_insurance" placeholder="Vehicle Insurance" type="text">
+
+                                            </div>
+
+                                            
+
+                                        </div>
+
+                                        -->
+
+                                        <input  id="drivers_vehicle_insurance" name="drivers_vehicle_insurance"  value=""  type="hidden">
+
+
+                                
+
+                                        
+
+                                        <div class="col-md-6 mb-3">
+
+                                            <label for="validationServer05">Status</label>
+                                            <select class="m-b-10 form-control" id="drivers_status" name="drivers_status" required data-placeholder="Choose">
+
+                                                <option value="1">Active</option>
+                                                <option value="2">In-Active</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-4">
+                                            <label for="validationServer05">Profile Image</label>
+                                            <div class="drive_upload_img_div">
+                                            <img id="drivers_profile_sec" 
+                                            <% if(data_record.record_id==0){ %>
+                                                src=""
+                                            <% }else{ %>
+                                                
+                                                src="<%= (typeof data_record.record.User_Document[0] !== 'undefined')? data_record.record.User_Document[0].Document_Detail : "" %>" 
+
+                                            <% } %>
+                                            style="" alt="logo"/>
+                                            </div>
+
+                                           
+                                            <input class="form-control" id="drivers_profile" 
+                                            onchange="
+                                  
+
+                                                if (this.files && this.files[0]) {
+                                                    var reader = new FileReader();
+
+                                                    if(this.files[0].type == 'image/png' || this.files[0].type == 'image/jpeg'){
+
+                                                        reader.onload = function (e) {
+                                                            $('#drivers_profile_sec').attr('src', e.target.result);
+                                                        }
+                                                        reader.readAsDataURL(this.files[0]);
+                                                    }
+                                                return;                                        
+                                                
+                                                }
+                                            "    
+                                            name="drivers_profile" 
+                                            <% if(data_record.record_id==0){ %>
+                                            required 
+                                            <% } %>
+                                            type="file">
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-actions">
+                                    <div class="form-group row">
+                                        <div class="col-md-12 text-right btn-list">
+                                            <button class="btn btn-primary btn-rounded"
+                                            <% if(data_record.record_id == 0){ %> 
+                                            onclick="
+                                            submit_data(
+                                                 this,
+                                                 '',
+                                                 'create_drivers',
+                                                 '',
+                                                 '/cms/drivers/add',
+                                                 '',
+                                                 '/cms/drivers/',
+                                                 true,
+                                                 'driver_add_after_function',
+                                                 '',
+                                                 true,
+                                                 false,
+                                                 true,
+                                                 false
+                 
+                                             );
+                                 
+                                             "
+                                             <% }else{ %>  
+
+                                                
+                                                onclick="
+                                                submit_data(
+                                                     this,
+                                                     '',
+                                                     'create_drivers',
+                                                     '',
+                                                     '/cms/drivers/edit/<%= data_record.record_id %>',
+                                                     '',
+                                                     '',
+                                                     false,
+                                                     '',
+                                                     '',
+                                                     true,
+                                                     false,
+                                                     true,
+                                                     false
+                     
+                                                 );
+                                     
+                                                 "
+
+                                            <% } %>
+                                            type="button">Submit</button>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.widget-body -->
+                    </div>
+                    <!-- /.widget-bg -->
+                </div>
+
+                <!-- /.widget-holder -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.widget-list -->
+    </main>
+    <!-- /.main-wrappper -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <form id="Driver_Get_City_From" method="post" action="/cms/drivers/get-city" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="Driver_Get_City_State_Id" id="Driver_Get_City_State_Id" value="0" />
+    </form>
+
+
+
+
+    <script>
+
+        function driver_get_city_function(respon, html) {
+
+            console.log(respon);
+
+            $('#drivers_city').html('');
+           // $("#drivers_city option[value='']").remove();
+            $(respon.response).each(function(i, v){
+                var option = new Option(respon.response[i].City_Name,respon.response[i].City_Id, false, false);
+                $('#drivers_city').append(option);
+
+            });
+           
+            $('#drivers_city').trigger('change');
+    
+        }
+
+    
+        function driver_add_after_function(respon, html){
+
+            $('#drivers_profile_sec').attr('src',"");
+
+        }
+    </script>
+
+
+
+    <% include ../../part/footer.ejs %>
